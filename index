@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadoras de IDEB</title>
+<style>
+    /* Estilos gerais */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    
+    /* Estilos para o cabeçalho */
+    header {
+        background-color: #01853a;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+    }
+
+    header img {
+        max-width: 90%;
+        margin-top: 20px;
+    }
+    
+    /* Estilos para as guias */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        display: flex;
+    }
+    
+    /* Estilo para os botões das guias */
+    .tab button {
+        background-color: #ddd;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        flex: 1;
+        font-size: 16px;
+    }
+    
+    /* Mudar cor do botão quando selecionado */
+    .tab button.active {
+        background-color: #01853a;
+        color: #fff;
+    }
+    
+    /* Criar guias na parte inferior */
+    .tabcontent {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+
+    /* Estilos para os formulários */
+    form {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    button[type="button"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    button[type="button"]:hover {
+        background-color: #45a049;
+    }
+
+    /* Estilos para os resultados */
+    #resultado1, #resultado2, #resultado3 {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+
+    <img src="https://media.licdn.com/dms/image/C4D1BAQEXxyiXns6Ntg/company-background_10000/0/1653261582684/crede01_cover?e=2147483647&v=beta&t=LwDD54y9oXx45Wk07bt0DqBRA6uqf_QkiRtkITcOJkU" alt="CECOM">
+    <h1>Calculadoras de IDEB</h1>
+</header>
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'cal1')">Calculadora 5º Ano - Ensino Fundamental</button>
+    <button class="tablinks" onclick="openTab(event, 'cal2')">Calculadora 9º Ano - Ensino Fundamental</button>
+    <button class="tablinks" onclick="openTab(event, 'cal3')">Calculadora 3º Série - Ensino Médio</button>
+</div>
+
+<!-- Conteúdo das guias -->
+<div id="cal1" class="tabcontent">
+    <h1>Cálculo do IDEB das Escolas 5º Ano</h1>
+    <h2>Informe os dados:</h2>
+    <form id="idebCalculator1">
+        <label for="proficienciaLP1">Proficiência Média de Língua Portuguesa (5º Ano):</label>
+        <input type="number" id="proficienciaLP1" name="proficienciaLP1" required><br>
+
+        <label for="proficienciaMT1">Proficiência Média de Matemática (5º Ano):</label>
+        <input type="number" id="proficienciaMT1" name="proficienciaMT1" required><br>
+
+        <label for="aprovados11">Percentual de Aprovados do 1º Ano:</label>
+        <input type="number" id="aprovados11" name="aprovados11" required><br>
+
+        <label for="aprovados21">Percentual de Aprovados do 2º Ano:</label>
+        <input type="number" id="aprovados21" name="aprovados21" required><br>
+
+        <label for="aprovados31">Percentual de Aprovados do 3º Ano:</label>
+        <input type="number" id="aprovados31" name="aprovados31" required><br>
+
+        <label for="aprovados41">Percentual de Aprovados do 4º Ano:</label>
+        <input type="number" id="aprovados41" name="aprovados41" required><br>
+
+        <label for="aprovados51">Percentual de Aprovados do 5º Ano:</label>
+        <input type="number" id="aprovados51" name="aprovados51" required><br>
+
+        <button type="button" onclick="calcular(1)">Calcular</button>
+    </form>
+
+    <h2>Resultado:</h2>
+    <p id="resultado1"></p>
+</div>
+
+<div id="cal2" class="tabcontent">
+    <h1>Cálculo do IDEB das Escolas 9º Ano</h1>
+    <h2>Informe os dados:</h2>
+    <form id="idebCalculator2">
+        <label for="proficienciaLP2">Proficiência Média de Língua Portuguesa (9º Ano):</label>
+        <input type="number" id="proficienciaLP2" name="proficienciaLP2" required><br>
+
+        <label for="proficienciaMT2">Proficiência Média de Matemática (9º Ano):</label>
+        <input type="number" id="proficienciaMT2" name="proficienciaMT2" required><br>
+
+        <label for="aprovados12">Percentual de Aprovados do 6º Ano:</label>
+        <input type="number" id="aprovados12" name="aprovados12" required><br>
+
+        <label for="aprovados22">Percentual de Aprovados do 7º Ano:</label>
+        <input type="number" id="aprovados22" name="aprovados22" required><br>
+
+        <label for="aprovados32">Percentual de Aprovados do 8º Ano:</label>
+        <input type="number" id="aprovados32" name="aprovados32" required><br>
+
+        <label for="aprovados42">Percentual de Aprovados do 9º Ano:</label>
+        <input type="number" id="aprovados42" name="aprovados42" required><br>
+
+        <button type="button" onclick="calcular(2)">Calcular</button>
+    </form>
+
+    <h2>Resultado:</h2>
+    <p id="resultado2"></p>
+</div>
+
+<div id="cal3" class="tabcontent">
+    <h1>Cálculo do IDEB das Escolas 3º Série</h1>
+    <h2>Informe os dados:</h2>
+    <form id="idebCalculator3">
+        <label for="proficienciaLP3">Proficiência Média de Língua Portuguesa (3º Série):</label>
+        <input type="number" id="proficienciaLP3" name="proficienciaLP3" required><br>
+
+        <label for="proficienciaMT3">Proficiência Média de Matemática (3º Série):</label>
+        <input type="number" id="proficienciaMT3" name="proficienciaMT3" required><br>
+
+        <label for="aprovados13">Percentual de Aprovados do 1º Série:</label>
+        <input type="number" id="aprovados13" name="aprovados13" required><br>
+
+        <label for="aprovados23">Percentual de Aprovados do 2º Série:</label>
+        <input type="number" id="aprovados23" name="aprovados23" required><br>
+
+        <label for="aprovados33">Percentual de Aprovados do 3º Série:</label>
+        <input type="number" id="aprovados33" name="aprovados33" required><br>
+
+        <button type="button" onclick="calcular(3)">Calcular</button>
+    </form>
+
+    <h2>Resultado:</h2>
+    <p id="resultado3"></p>
+</div>
+
+<script>
+   function calcular(calculadora) {
+        var notaLP, notaMT, aprovados1, aprovados2, aprovados3, aprovados4, aprovados5;
+        if (calculadora === 1) {
+            var XX1 = 49
+            var XX2 = 324
+            var YY1 = 60
+            var YY2 = 322
+            notaLP = parseFloat(document.getElementById('proficienciaLP1').value);
+            notaMT = parseFloat(document.getElementById('proficienciaMT1').value);
+            aprovados1 = parseFloat(document.getElementById('aprovados11').value) / 100;
+            aprovados2 = parseFloat(document.getElementById('aprovados21').value) / 100;
+            aprovados3 = parseFloat(document.getElementById('aprovados31').value) / 100;
+            aprovados4 = parseFloat(document.getElementById('aprovados41').value) / 100;
+            aprovados5 = parseFloat(document.getElementById('aprovados51').value) / 100;
+            var resultado = document.getElementById('resultado1');
+            var taxaMediaAprovacao = 5 / ((1 / aprovados1) + (1 / aprovados2) + (1 / aprovados3) + (1 / aprovados4) + (1 / aprovados5));
+        } else if (calculadora === 2) {
+            var XX1 = 100
+            var XX2 = 400
+            var YY1 = 100
+            var YY2 = 400
+            notaLP = parseFloat(document.getElementById('proficienciaLP2').value);
+            notaMT = parseFloat(document.getElementById('proficienciaMT2').value);
+            aprovados1 = parseFloat(document.getElementById('aprovados12').value) / 100;
+            aprovados2 = parseFloat(document.getElementById('aprovados22').value) / 100;
+            aprovados3 = parseFloat(document.getElementById('aprovados32').value) / 100;
+            aprovados4 = parseFloat(document.getElementById('aprovados42').value) / 100;
+            var resultado = document.getElementById('resultado2');
+            var taxaMediaAprovacao = 4 / ((1 / aprovados1) + (1 / aprovados2) + (1 / aprovados3) + (1 / aprovados4));
+        } else if (calculadora === 3) {
+            var XX1 = 117
+            var XX2 = 451
+            var YY1 = 111
+            var YY2 = 467
+            notaLP = parseFloat(document.getElementById('proficienciaLP3').value);
+            notaMT = parseFloat(document.getElementById('proficienciaMT3').value);
+            aprovados1 = parseFloat(document.getElementById('aprovados13').value) / 100;
+            aprovados2 = parseFloat(document.getElementById('aprovados23').value) / 100;
+            aprovados3 = parseFloat(document.getElementById('aprovados33').value) / 100;
+            var resultado = document.getElementById('resultado3');
+            var taxaMediaAprovacao = 3 / ((1 / aprovados1) + (1 / aprovados2) + (1 / aprovados3) );
+        }
+
+        var notaPadronizadaLP = ((notaLP - XX1) / (XX2 - XX1)) * 10;
+        var notaPadronizadaMT = ((notaMT - YY1) / (YY2 - YY1)) * 10;
+        var idebPreliminar = ((notaPadronizadaLP + notaPadronizadaMT) / 2 * taxaMediaAprovacao);
+
+        resultado.innerHTML = "Nota Padronizada de Língua Portuguesa da Escola: " + notaPadronizadaLP.toFixed(2) + "<br>" +
+                              "Nota Padronizada de Matemática da Escola: " + notaPadronizadaMT.toFixed(2) + "<br>" +
+                              "Taxa Média de Aprovação da Escola: " + taxaMediaAprovacao.toFixed(4) + "<br>" +
+                              "IDEB Preliminar da Escola: " + idebPreliminar.toFixed(2);
+    }
+    // Função para alternar entre as guias
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
